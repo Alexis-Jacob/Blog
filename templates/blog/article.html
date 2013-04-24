@@ -1,0 +1,12 @@
+<html>
+<head>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/pygments.css' %}" />
+
+</head>
+<body>
+{% load bbcode %}
+
+{{ article.content|bbcode }}
+</body>
+</html>
