@@ -1,0 +1,16 @@
+<html>
+  <head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/pygments.css' %}" />
+    <script type="text/javascript" src="{% static 'javascript/jquery.js' %}"></script>    
+  </head>
+  <body>
+    {% load bbcode %}
+    {% for comment in comments %}
+    <p>
+      De {{ comment.author }} <br />
+      {{ comment.content|bbcode }}
+    </p>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,7 @@
+$(document).ready(function() {
+    $('#comment').fadeOut('fast', function(){
+	$('#comment').load("/get_comment/{{article.id}}", function() {
+	    $('#comment').fadeIn('fast');
+	});
+    });
+});

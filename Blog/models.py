@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class   FileUpload(models.Model):
+    obj = models.ImageField(upload_to='%Y/%m/%d')
+
+    def __unicode__(self):
+        return (str(self.obj))
+
 class   Category(models.Model):
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=30)

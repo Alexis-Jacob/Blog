@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Blog.models import Category, Article, Comment
+from Blog.models import Category, Article, Comment, FileUpload
 
 class   ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date', 'validated', 'category')
@@ -18,6 +18,7 @@ class   CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'content')
 
 
+admin.site.register(FileUpload)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
