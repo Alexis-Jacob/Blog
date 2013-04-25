@@ -43,3 +43,10 @@ def     view_archive(request):
     article = Article.objects.all().reverse()
     default['content'] = article
     return render(request, 'blog/archive.html', default)
+
+
+def     view_gallery(request, id_category, slug):
+    cat = get_object_or_404(FileCategory, id=id_category)
+    images = FileUpload.objects.filter(category=id_category)
+    default['images'] = images
+    return render(request, 'blog/gallery.html', default)

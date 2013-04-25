@@ -51,11 +51,11 @@
 
 			// set panel
 			$(el).css({
-				'background-image':'url('+images[el.id][0]+')',
-				'width': params[el.id].width,
-				'height': params[el.id].height,
-				'position': 'relative',
-				'background-position': 'top left'
+			    'background-image':'url('+images[el.id][0]+')',
+			    'width': params[el.id].width,
+			    'height': params[el.id].height,
+			    'position': 'relative',
+			    'background-position': 'top left'
 			}).wrap("<div class='coin-slider' id='coin-slider-"+el.id+"' />");	
 			
 				
@@ -73,21 +73,21 @@
 		}
 		
 		// squares positions
-		$.setFields = function(el){
-			
-			tWidth = sWidth = parseInt(params[el.id].width/params[el.id].spw);
-			tHeight = sHeight = parseInt(params[el.id].height/params[el.id].sph);
-			
-			counter = sLeft = sTop = 0;
-			tgapx = gapx = params[el.id].width - params[el.id].spw*sWidth;
-			tgapy = gapy = params[el.id].height - params[el.id].sph*sHeight;
-			
-			for(i=1;i <= params[el.id].sph;i++){
-				gapx = tgapx;
-				
-					if(gapy > 0){
-						gapy--;
-						sHeight = tHeight+1;
+	    $.setFields = function(el){
+		
+		tWidth = sWidth = parseInt(params[el.id].width/params[el.id].spw);
+		tHeight = sHeight = parseInt(params[el.id].height/params[el.id].sph);
+		
+		counter = sLeft = sTop = 0;
+		tgapx = gapx = params[el.id].width - params[el.id].spw*sWidth;
+		tgapy = gapy = params[el.id].height - params[el.id].sph*sHeight;
+		
+		for(i=1;i <= params[el.id].sph;i++){
+		    gapx = tgapx;
+		    
+		    if(gapy > 0){
+			gapy--;
+			sHeight = tHeight+1;
 					} else {
 						sHeight = tHeight;
 					}
@@ -477,7 +477,7 @@
 		sDelay: 30, // delay beetwen squares in ms
 		opacity: 0.7, // opacity of title and navigation
 		titleSpeed: 500, // speed of title appereance in ms
-		effect: '', // random, swirl, rain, straight
+		effect: 'rain', // random, swirl, rain, straight
 		navigation: true, // prev next and buttons
 		links : true, // show images as links 
 		hoverPause: true // pause on hover		
