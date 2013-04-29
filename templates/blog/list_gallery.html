@@ -1,0 +1,13 @@
+{% extends "blog/index.html" %}
+{% load staticfiles %}
+{% block title %} - Galerie {% endblock %}
+    <div class="post_box">
+    {% block content %}
+    <h3> List des galeries {{name}}:</h3>
+    <ul>
+    {% for gallery in galleries %}
+    <li><a href="/gallery/{{gallery.id}}-{{gallery.slug}}">{{gallery.name}}</a></li>
+    {% endfor %}
+    </ul>
+    {% endblock %}
+    </div>

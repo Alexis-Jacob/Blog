@@ -1,16 +1,20 @@
-<html>
-  <head>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/pygments.css' %}" />
-    <script type="text/javascript" src="{% static 'javascript/jquery.js' %}"></script>    
-  </head>
-  <body>
     {% load bbcode %}
-    {% for comment in comments %}
-    <p>
-      De {{ comment.author }} <br />
-      {{ comment.content|bbcode }}
-    </p>
+<h3> Comments </h3>
+  <div id="comment_section">
+  {% for comment in comments %}
+    <ol class="comments first_level">
+      <li>
+        <div class="comment_box commentbox1">
+          <div class="comment_text">
+            <div class="comment_author">{{comment.author}}</div>
+            {{comment.content|bbcode}}
+          </div>
+          <div class="cleaner"></div>
+        </div>                        
+        
+      </li>
+    </ol>
     {% endfor %}
-  </body>
-</html>
+    </div>
+

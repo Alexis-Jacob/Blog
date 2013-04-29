@@ -1,35 +1,48 @@
-<html>
-  <head>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/pygments.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/coin-slider-styles.css'%}" type="text/css" />
-    <style>
-      .bb_img{max-width:50%;}
-    </style>
-    <script type="text/javascript" src="{% static 'javascript/jquery.js' %}"/></script>    
-    <script type="text/javascript" src="{% static 'javascript/coin-slider.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'javascript/load_comment.js' %}">
-    </script>
-    <script type="text/javascript">
-      var id_article = {{article.id}};
-    
-      
-    </script>
-  </head>
-  
-  <body>
-    
-    <!-- <img src="../media/{{ img }}" width="{{ img.width }}" height="{{ img.height }}" /> -->
-    
+{% extends "blog/index.html" %}
+{% load staticfiles %}
+{% block css %}
+<style>
+  .bb_img{max-width:50%;}
+</style>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="{% static 'javascript/load_comment.js' %}">
+</script>
+<script type="text/javascript">
+  var id_article = {{article.id}};
+</script>
+{% endblock %}
+{% block title %} - {{article.title}} {% endblock %}
+
     {% load bbcode %}
-    
-    {{ article.content|bbcode }}
-    <form id="form_post" action="/article/{{article.id}}-{{article.slug}}" method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Submit" />
-      
-      <div id="comment">
-	{% include "blog/comments.html" %}
-      </div>
-  </body>
-</html>
+    <div class="post_box">
+    {% block content %}
+    <h2>{{article.title}}</h2>
+  <div class="post_meta"><strong>Date:</strong> {{article.date|date:"d/m/Y"}} | <strong>Author:</strong> {{article.author|capfirst}}</div><br />
+  {{ article.content|bbcode }}
+  <br />
+  <hr />
+  <br />
+  <div id="comment">
+    {% include "blog/comments.html" %}
+  </div>
+
+<div id="comment_form">
+                    <h3>Leave your comment</h3>
+                    
+                    <form id="form_post" action="/article/{{article.id}}-{{article.slug}}" method="post">
+		      {% csrf_token %}
+                      <div class="form_row">
+                        <label>Name (* required )</label><br />
+                        <input type="text" id="id_author" name="author" />
+                      </div>
+                      <div class="form_row">
+                        <label>Comment</label><br />
+                        <textarea  id="id_content" name="content" rows="" cols=""></textarea>
+                      </div>
+		      
+                        <input type="submit" name="Submit" value="Submit" class="submit_btn" />
+                    </form>
+                    </div>
+    {% endblock %}
+    </div>

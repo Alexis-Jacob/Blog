@@ -1,0 +1,29 @@
+<html>
+  <head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/pygments.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/coin-slider-styles.css'%}" type="text/css" />
+    <style>
+      .bb_img{max-width:900px;max-height:600px}
+    </style>
+    <script type="text/javascript" src="{% static 'javascript/jquery.js' %}"/></script>    
+    <script type="text/javascript" src="{% static 'javascript/load_comment.js' %}">
+    </script>
+</head>
+
+<body>
+  <div id='coin-slider'>
+    {% for image in images %}
+    {{image.obj}} <br />
+    <a href="/media/{{image.obj}}" target="_blank">
+      <img src='/media/thumbnails/{{image.obj}}.png' class='bb_img'>
+      <span>
+	{{image.description}}
+      </span>
+    </a>
+ {% endfor %}
+    
+  </div>
+  
+</body>
+</html>

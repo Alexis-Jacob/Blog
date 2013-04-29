@@ -6,4 +6,7 @@ urlpatterns = patterns('Blog.views',
                        url(r'^archive/$', 'view_archive'),
                        url(r'^get_comment/(?P<id_article>\d+)$', 'get_comment'),
                        url(r'^gallery/(?P<id_category>\d+)-(?P<slug>.+)$', 'view_gallery'),
+                       url(r'^gallery/$', 'view_gallery'),
+                       url(r'^index$', 'view_default'),
+                       
 )
